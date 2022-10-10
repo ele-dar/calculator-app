@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@600;700&display=swap');
+
+:root {
+    --bckg-main: hsl(222, 26%, 31%);
+    --bckg-keypad: hsl(223, 31%, 20%);
+    --bckg-screen: hsl(224, 36%, 15%);
+    --key-primary: hsl(30, 25%, 89%);
+    --key-shadow-primary: hsl(28, 16%, 65%);
+    --key-secondary: hsl(225, 21%, 49%);
+    --key-shadow-secondary: hsl(224, 28%, 35%);
+    --key-tertiary: hsl(6, 63%, 50%);
+    --key-shadow-tertiary: hsl(6, 70%, 34%);
+    --text-dark: hsl(221, 14%, 31%);
+    --text-light: hsl(0, 0%, 100%);
+
+}
+
+body {
+    font-family: 'League Spartan', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-light);
+    height: 100vh;
+    max-width: 440px;
+    margin-inline: 2rem;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--bckg-main);
+}
+
+
+
+/* HEADER */
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 2.2rem 0;
+}
+
+header>div {
+    display: flex;
+    align-items: flex-end;
+    font-size: 1rem;
+}
+
+/* MAIN CONTENT */
+.screen {
+    background-color: var(--bckg-screen);
+    font-size: 2.6rem;
+    font-weight: 600;
+    padding: 1.4rem;
+    border-radius: .5rem;
+    display: flex;
+    justify-content: end;
+}
+
+.keypad {
+    margin-top: 1.6rem;
+    background-color: var(--bckg-keypad);
+    padding: 1.4rem;
+    border-radius: .5rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+}
+
+.keypad>div {
+    display: grid;
+    place-content: center;
+    border-radius: .3rem;
+    height: 3rem;
+    background-color: var(--key-primary);
+    color: var(--text-dark);
+    box-shadow: 0 .3rem 0 0 var(--key-shadow-primary);
+}
+
+#reset,
+#equal {
+    grid-column: span 2;
+}
+
+#delete,
+#reset {
+    background-color: var(--key-secondary);
+    color: var(--text-light);
+    box-shadow: 0 .3rem 0 0 var(--key-shadow-secondary);
+}
+
+#equal {
+    background-color: var(--key-tertiary);
+    color: var(--text-light);
+    box-shadow: 0 .3rem 0 0 var(--key-shadow-tertiary);
+}
+
+#delete,
+#reset,
+#equal {
+    font-size: 1.2rem;
+}
+
+
+
+/* FOOTER */
+footer {
+    margin-top: auto;
+}
+
+.attribution {
+    font-size: 11px;
+    text-align: center;
+}
+
+.attribution a {
+    color: hsl(228, 45%, 44%);
+}
+
+@media (min-width: 504px) {
+    body {
+        margin-inline: auto;
+    }
+
+    header {
+        margin-top: 10rem;
+    }
+}
