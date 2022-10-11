@@ -1,0 +1,25 @@
+:root {
+    --bckg-main: hsl(0, 0%, 90%);
+    --bckg-keypad: hsl(0, 5%, 81%);
+    --bckg-screen: hsl(0, 0%, 93%);
+    --key-primary: hsl(45, 7%, 89%);
+    --key-shadow-primary: hsl(35, 11%, 61%);
+    --key-secondary: hsl(185, 42%, 37%);
+    --key-shadow-secondary: hsl(185, 58%, 25%);
+    --key-tertiary: hsl(25, 98%, 40%);
+    --key-shadow-tertiary: hsl(25, 99%, 27%);
+    --text-dark: hsl(60, 10%, 19%);
+    --text-light: hsl(0, 0%, 100%);
+}
+
+body {
+    color: var(--text-dark);
+}
+
+button {
+    color: var(--text-dark);
+}
+
+#equal {
+    color: var(--text-light);
+}

@@ -7,7 +7,9 @@
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
   <title>Calculator app | Frontend Mentor </title>
   <link rel="stylesheet" href="reset.css">
+  <link rel="stylesheet" href="themes/dark.css" id="theme-stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <script src="themes/theme.js" defer></script>
   <script src="index.js" defer></script>
 </head>
 
@@ -17,12 +19,21 @@
     <div>
       <p>THEME</p>
       <div class="theme-switch">
-        <input type="radio" id="theme-1" name="theme" value="theme-1">
-        <label for="theme-1">1</label>
-        <input type="radio" id="theme-2" name="theme" value="theme-2">
-        <label for="theme-2">2</label>
-        <input type="radio" id="theme-3" name="theme" value="theme-3">
-        <label for="theme-3">3</label>
+        <label class="switch-radio">
+          <input type="radio" id="dark" name="theme" value="dark" checked>
+          <span class="switch-bubble"></span>
+          <span class="switch-number">1</span>
+        </label>
+        <label class="switch-radio">
+          <input type="radio" id="light" name="theme" value="light">
+          <span class="switch-bubble"></span>
+          <span class="switch-number">2</span>
+        </label>
+        <label class="switch-radio">
+          <input type="radio" id="neon" name="theme" value="neon">
+          <span class="switch-bubble"></span>
+          <span class="switch-number">3</span>
+        </label>
       </div>
     </div>
   </header>
