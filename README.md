@@ -12,7 +12,7 @@ This is a solution to the [Calculator app challenge on Frontend Mentor](https://
 
 ### Link
 
-- Try it out here: [Add live site URL here](https://your-live-site-url.com)
+- Try it out here: [https://ele-dar.github.io/calculator-app/](https://ele-dar.github.io/calculator-app/)
 
 ### Screenshots
 
