@@ -1,18 +1,6 @@
-# Frontend Mentor - Calculator app solution
+# Calculator app
 
 This is a solution to the [Calculator app challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/calculator-app-9lteq5N29).
-
-## Table of contents
-
-- [Overview](#overview)
-  - [Features](#features)
-  - [Screenshots](#screenshots)
-  - [Links](#links)
-- [My process](#my-process)
-  - [Built with](#built-with)
-  - [What I learned](#what-i-learned)
-  - [Continued development](#continued-development)
-  - [Useful resources](#useful-resources)
 
 ## Overview
 
@@ -22,15 +10,20 @@ This is a solution to the [Calculator app challenge on Frontend Mentor](https://
 - Users can choose between three color themes. 
 - The app loads with a light or dark theme according to the user's color scheme preference (`prefers-color-scheme`) and its changes are respected. However if a user chooses a theme with a toggle, the choice is maintained during the session.
 
+### Link
+
+- Try it out here: [Add live site URL here](https://your-live-site-url.com)
+
 ### Screenshots
 
-![Desktop view in dark mode](./screenshots/screenshot_dark.png)
-![Mobiel view in light mode](./screenshots/screenshot_light.png)
+Desktop view in dark mode:
 
-### Links
+<img src="./screenshots/screenshot_dark.png" alt="Desktop view in dark mode" width="600"/>
 
-<!-- Add page url -->
-- Try it out here: [Add live site URL here](https://your-live-site-url.com)
+Mobile view in light mode
+
+<img src="./screenshots/screenshot_light.png" alt="Mobile view in light mode" width="300"/>
+
 
 ## My process
 
