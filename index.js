@@ -22,8 +22,20 @@ const calculate = {
     'multiply': (x, y) => x * y
 }
 
+const operators = {
+    '+': 'add',
+    '-': 'subtract',
+    '/': 'divide',
+    '*': 'multiply'
+}
+
 keys.forEach(key => {
-    key.addEventListener('click', (e) => handleBtnClick(e.target))
+    key.addEventListener('click', e => handleBtnClick(e.target))
+})
+
+document.addEventListener('keydown', e => {
+    handleKeyPress(e.key)
+    console.log(e.key)
 })
 
 const handleBtnClick = (btn) => {
@@ -57,6 +69,31 @@ const handleBtnClick = (btn) => {
             memory = 0
             operatorMemory = 0
             break
+    }
+    screen.innerHTML = display ? display : memory
+}
+
+const handleKeyPress = (key) => {
+    if (!isNaN(+key)) {
+        display = concatenate(display, key)
+    } else if (key === '.' || key === ',') {
+        if (display.toString().includes('.')) return
+        display = display.toString().concat('.')
+    } else if (key === 'Backspace') {
+        display = removeLastElement(display)
+    } else if (key === '+' || key === '-' || key === '/' || key === '*') {
+        memory = operatorMemory ? calculate[operatorMemory](+memory, +display) : display
+        operatorMemory = operators[key]
+        display = 0
+    } else if (key === '=' || key === 'Enter') {
+        if (operatorMemory) {
+            memory = calculate[operatorMemory](+memory, +display)
+            display = 0
+        }
+    } else if (key === 'Escape') {
+        display = 0
+        memory = 0
+        operatorMemory = 0
     }
     screen.innerHTML = display ? display : memory
 }

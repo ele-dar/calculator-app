@@ -47,6 +47,8 @@ header>div {
     position: absolute;
     height: 0;
     width: 0;
+    border: none;
+    opacity: 0;
 }
 
 .switch-bubble {
