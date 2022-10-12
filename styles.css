@@ -74,8 +74,6 @@ header>div {
     color: inherit;
 }
 
-
-
 /* MAIN CONTENT */
 .screen {
     background-color: var(--bckg-screen);
@@ -155,6 +153,6 @@ footer a {
     }
 
     header {
-        margin-top: 20vh;
+        margin-top: 15vh;
     }
 }
