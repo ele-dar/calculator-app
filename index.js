@@ -1,13 +1,20 @@
 const screen = document.querySelector('.screen')
+const screenBckg = document.querySelector('.screen-background')
 const keys = Array.from(document.querySelectorAll('button'))
 
-let display = 0
-let memory = 0
-let operatorMemory = ''
+const displayLength = window.matchMedia("(min-width: 504px)").matches ? 16 : 9
+console.log(displayLength)
 
-const concatenate = (value1, value2) => {
-    if (value1 == 0 && !value1.toString().includes('.')) return value2
-    return value1 + value2
+let display = 0
+let memory = {
+    number1: 0,
+    operator: '',
+    number2: 0,
+}
+
+const concatenateNumber = (x, y) => {
+    if (x == 0 && !x.toString().includes('.')) return y
+    return x + y
 }
 
 const removeLastElement = (value) => {
@@ -15,11 +22,22 @@ const removeLastElement = (value) => {
     return value.toString().slice(0, -1)
 }
 
+const adjustResultLength = (x, maxLength) => {
+    const xLength = x.toString().length
+    integralPartLentgh = Math.round(x).toString().length
+    if (integralPartLentgh > maxLength) {
+        return x
+    } else if (xLength > maxLength) {
+        return parseFloat(x).toFixed(maxLength - 1 - integralPartLentgh)
+    }
+    return x
+}
+
 const calculate = {
-    'add': (x, y) => x + y,
-    'subtract': (x, y) => x - y,
-    'divide': (x, y) => x / y,
-    'multiply': (x, y) => x * y
+    add: (x, y) => x + y,
+    subtract: (x, y) => x - y,
+    divide: (x, y) => x / y,
+    multiply: (x, y) => x * y
 }
 
 const operators = {
@@ -35,13 +53,12 @@ keys.forEach(key => {
 
 document.addEventListener('keydown', e => {
     handleKeyPress(e.key)
-    console.log(e.key)
 })
 
 const handleBtnClick = (btn) => {
     switch (btn.id) {
         case '':
-            display = concatenate(display, btn.innerHTML)
+            display = concatenateNumber(display, btn.innerHTML)
             break
         case 'point':
             if (display.toString().includes('.')) break
@@ -54,28 +71,44 @@ const handleBtnClick = (btn) => {
         case 'subtract':
         case 'divide':
         case 'multiply':
-            memory = operatorMemory ? calculate[operatorMemory](+memory, +display) : display
-            operatorMemory = btn.id
+            if (memory.operator) {
+                if (display) {
+                    memory.number2 = display
+                    memory.number1 = calculate[memory.operator](+memory.number1, +memory.number2)
+                } else {
+                    memory.number2 = memory.number1
+                }
+            } else {
+                memory.number1 = display
+            }
+            memory.operator = btn.id
             display = 0
             break
         case 'equal':
-            if (operatorMemory) {
-                memory = calculate[operatorMemory](+memory, +display)
+            if (memory.operator) {
+                memory.number2 = display || memory.number2 || memory.number1
+                memory.number1 = calculate[memory.operator](+memory.number1, +memory.number2)
                 display = 0
             }
             break
         case 'reset':
             display = 0
-            memory = 0
-            operatorMemory = 0
+            memory = {
+                number1: 0,
+                operator: '',
+                number2: 0,
+            }
             break
     }
-    screen.innerHTML = display ? display : memory
+    screen.innerHTML = display || memory.number1
+    console.log(adjustResultLength(screen.innerHTML, displayLength))
+    screen.innerHTML = adjustResultLength(screen.innerHTML, displayLength)
+    if (screen.innerHTML.length > displayLength) screen.innerHTML = parseFloat(screen.innerHTML).toExponential(displayLength - 5)
 }
 
 const handleKeyPress = (key) => {
     if (!isNaN(+key)) {
-        display = concatenate(display, key)
+        display = concatenateNumber(display, key)
     } else if (key === '.' || key === ',') {
         if (display.toString().includes('.')) return
         display = display.toString().concat('.')
